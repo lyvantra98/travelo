@@ -3,6 +3,7 @@ from django.core.validators import RegexValidator, MinValueValidator
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib import admin
 
 from tour.choices import *
 
@@ -31,6 +32,15 @@ class Destination(models.Model):
   area = models.CharField(max_length=100, blank=True)
   destination_name = models.CharField(max_length=70, blank=True)
 
+  def  __str__(self):
+    return self.destination_name
+
+@admin.register(Destination)
+class DestinationAdmin(admin.ModelAdmin):
+ list_display = ("id", "location_from", "location_to", "area",
+                 "destination_name")
+ list_per_page = 10
+
 class Tour(models.Model):
 
   destination = models.OneToOneField(
@@ -47,6 +57,13 @@ class Tour(models.Model):
   max_people = models.IntegerField(validators=[MinValueValidator(1)])
   status_evaluete = models.IntegerField(choices=STATUS_E_CHOICES, default=0)
   detail_tour = models.TextField()
+  votes = models.IntegerField(default=0)
+
+@admin.register(Tour)
+class TourAdmin(admin.ModelAdmin):
+ list_display = ("tour_name", "experience_time", "price", "start_day",
+                 "end_day", "min_age", "max_people", "status_evaluete", "detail_tour")
+ list_per_page = 10
 
 class Booking(models.Model):
 
@@ -64,3 +81,8 @@ class Slider(models.Model):
   slider_image = models.ImageField(upload_to='images/', blank=True)
   title = models.CharField(max_length=100)
   teaser = models.TextField('teaser', blank=True)
+
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+  list_display = ("slider_image", "title", "teaser")
+  list_per_page = 10

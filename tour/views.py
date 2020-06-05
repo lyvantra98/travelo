@@ -1,6 +1,8 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from .models import Slider
+from django.db.models import Count
+
+from .models import *
 
 from tour.forms import SignUpForm
 
@@ -23,7 +25,12 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 def index(request):
+    areas = Destination.objects.values('area').annotate(Count('tour'))
     sliders = Slider.objects.all()
+    context = {
+        'areas' : areas,
+        'sliders' : sliders,
+    }
 
-    return render(request, 'index.html', {'sliders': sliders})
+    return render(request, 'index.html', context)
 
