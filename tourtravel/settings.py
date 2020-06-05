@@ -1,6 +1,8 @@
 import os
 import pymysql
+import smtplib
 
+pymysql.version_info = (1, 3, 13, "final", 0)
 pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+    'crispy_forms',
     'tour',
 ]
 
@@ -95,7 +98,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTHENTICATION_BACKENDS = (
+    'tour.views.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend'
+)
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -114,15 +120,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Django Sass
 SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR,'static')
+
+#Configuring a SMTP Email Service
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tealy123321@gmail.com'
+EMAIL_HOST_PASSWORD = 'deocomatkhau'
+EMAIL_USE_TLS = True
