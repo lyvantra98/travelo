@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -54,6 +55,7 @@ class EmailOrUsernameModelBackend(object):
             return None
 
 def index(request):
+
     # destinations = Destination.objects.values('area').annotate(Count('tour'))[:6]
     sliders = Slider.objects.all()
     # places = Tour.objects.select_related('destination')[:6]

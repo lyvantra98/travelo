@@ -108,4 +108,3 @@ class Review(models.Model):
 class ReviewAdmin(admin.ModelAdmin):
   list_display = ('content', 'date')
   list_per_page = 10
-
