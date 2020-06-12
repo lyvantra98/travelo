@@ -1,4 +1,4 @@
-  {% load staticfiles %}
+{% load static %}
 <div class="nav">
 <div class="header-area ">
     <div id="sticky-header" class="main-header-area">
@@ -96,6 +96,17 @@
     </div>
 </div>
 </header>
+<<<<<<< HEAD
+=======
+{% if messages %}
+  {% for msg in messages %}
+    <div class="alert alert-info alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{msg.message}}
+    </div>
+  {% endfor %}
+{% endif %}
+>>>>>>> master
   <!-- Modal -->
 <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
