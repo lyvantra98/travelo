@@ -99,11 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-<<<<<<< HEAD
-    'tour.admin.EmailOrUsernameModelBackend',
-=======
     'tour.views.EmailOrUsernameModelBackend',
->>>>>>> master
     'django.contrib.auth.backends.ModelBackend'
 )
 # Internationalization

@@ -44,7 +44,6 @@ class DestinationAdmin(admin.ModelAdmin):
  list_per_page = 10
 
 class Tour(models.Model):
-
   destination = models.OneToOneField(
     Destination,
     on_delete=models.CASCADE,
@@ -60,6 +59,7 @@ class Tour(models.Model):
   status_evaluete = models.IntegerField(choices=STATUS_E_CHOICES, default=0)
   detail_tour = models.TextField()
   votes = models.IntegerField(default=0)
+  image = models.ImageField(upload_to='images/tours')
 
   def __str__(self):
     return self.tour_name
@@ -78,12 +78,8 @@ class Booking(models.Model):
   booking_time = models.DateField(auto_now_add=True)
   people_number = models.PositiveIntegerField(validators=[MinValueValidator(1)])
 
-class Photo(models.Model):
-  tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
-  image = models.ImageField(upload_to='images/')
-
 class Slider(models.Model):
-  slider_image = models.ImageField(upload_to='images/', blank=True)
+  slider_image = models.ImageField(upload_to='images/sliders', blank=True)
   title = models.CharField(max_length=100)
   teaser = models.TextField('teaser', blank=True)
 
@@ -107,4 +103,20 @@ class Review(models.Model):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
   list_display = ('content', 'date')
+  list_per_page = 10
+
+class Blog(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  title = models.CharField(max_length=150)
+  content = models.TextField()
+  date = models.DateField(auto_now_add=True)
+  tag = models.CharField(max_length=50)
+  image = models.ImageField(upload_to='images/blogs')
+
+  def __str__(self):
+    return self.title
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+  list_display = ('title', 'content', 'date', 'tag', 'image')
   list_per_page = 10

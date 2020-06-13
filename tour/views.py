@@ -55,16 +55,16 @@ class EmailOrUsernameModelBackend(object):
             return None
 
 def index(request):
-
-    # destinations = Destination.objects.values('area').annotate(Count('tour'))[:6]
+    destinations = Destination.objects.values('area').annotate(num_tours=Count('tour'))[:6]
     sliders = Slider.objects.all()
-    # places = Tour.objects.select_related('destination')[:6]
-     # reviews_number = Review.objects.values(tour=places.).annotate(Count('id'))
+    places = Tour.objects.select_related('destination').prefetch_related('review_set').annotate(num_review=Count('review'))[:6]
+    blogs = Blog.objects.select_related('user')[:3]
+
     context = {
         'destinations' : destinations,
         'sliders' : sliders,
         'places' : places,
-        # 'reviews_number' : reviews_number,
+        'blogs' : blogs,
     }
 
     return render(request, 'index.html', context)

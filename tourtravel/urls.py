@@ -10,9 +10,4 @@ urlpatterns = [
     path('', include('tour.urls'))
 ]
 
-<<<<<<< HEAD
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-=======
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
->>>>>>> master
