@@ -1,7 +1,7 @@
 {% load static %}
 <div class="nav">
 <div class="header-area ">
-    <div id="sticky-header" class="main-header-area">
+    <div class="main-header-area">
         <div class="container-fluid">
             <div class="header_bottom_border">
                 <div class="row align-items-center">
@@ -62,8 +62,8 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a class="active" href="{% url 'index' %}">home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a class="" href="travel_destination.html">Destination</a></l/li>
+                                    <li><a href="{% url 'about' %}">About</a></li>
+                                    <li><a href="{% url 'destination' %}">Destination</a></li>
                                     <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                                 <li><a href="destination_details.html">Destinations details</a></li>

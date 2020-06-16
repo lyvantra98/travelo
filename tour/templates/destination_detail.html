@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{tour}}{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+    <div class="destination_banner_wrap overlay">
+        <div class="destination_text text-center">
+            <h3>{{tour.tour_name}}</h3>
+            <p>Pixel perfect design with awesome contents</p>
+        </div>
+    </div>
+
+    <!--destination-->
+    <div class="destination-tour-info-outer">
+        <div class="container">
+            <div class="destination-tour-info-wrap clearfix">
+                <div class="destination-tour-info destination-item-pdlr">
+                    <i class="fa fa-clock-o"></i>{{tour.experience_time}} Days
+                </div>
+                <div class="destination-tour-info destination-item-pdlr">
+                    <i class="fa fa-calendar"></i>Availability : {{tour.short_date_end_start}}
+                </div>
+                <div class="destination-tour-info destination-item-pdlr">
+                    <i class="fa fa-plane"></i>{{tour.destination.location_to}}
+                </div>
+                <div class="destination-tour-info destination-item-pdlr">
+                    <i class="fa fa-map-marker"></i>{{tour.destination.location_from}}
+                </div>
+                <div class="destination-tour-info destination-item-pdlr">
+                    <i class="fa fa-user"></i>Min Age : {{tour.min_age}}+
+                </div>
+                <div class="destination-tour-info destination-item-pdlr">
+                    <i class="fa fa-users"></i>Max People : {{tour.max_people}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="core-container">
+        <div class="destination_details_info">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-11">
+                    <div class="destination_info">
+                        <h3>
+                          <i class="fa fa-file-text-o"></i>
+                          Tour Details
+                        </h3>
+                        {{tour.detail_tour|safe|linebreaks}}
+                    </div>
+                    <div class="bordered_1px"></div>
+                    <div class="contact_join">
+                        <h3><i class="fa fa-file-image-o"></i> Photo</h3>
+                        <!--Carousel Wrapper-->
+                        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                          <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                              <div class="view">
+                                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+                                  alt="First slide">
+                                <div class="mask rgba-black-light"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                        <!--/.Carousel Wrapper-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- newletter_area_start  -->
+        <div class="newletter_area overlay">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-9">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="newsletter_text">
+                                    <h4>Subscribe Our Newsletter</h4>
+                                    <p>Subscribe newsletter to get offers and about
+                                        new places to discover.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="mail_form">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-9 col-md-8">
+                                            <div class="newsletter_field">
+                                                <input type="email" placeholder="Your mail" >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4">
+                                            <div class="newsletter_btn">
+                                                <button class="boxed-btn4 " type="submit" >Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- newletter_area_end  -->
+
+        <div class="popular_places_area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center mb_70">
+                            <h3>More Places</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_place">
+                            <div class="thumb">
+                                <img src="img/place/1.png" alt="">
+                                <a href="#" class="prise">$500</a>
+                            </div>
+                            <div class="place_info">
+                                <a href="#"><h3>California</h3></a>
+                                <p>United State of America</p>
+                                <div class="rating_days d-flex justify-content-between">
+                                    <span class="d-flex justify-content-center align-items-center">
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <a href="#">(20 Review)</a>
+                                    </span>
+                                    <div class="days">
+                                        <i class="fa fa-clock-o"></i>
+                                        <a href="#">5 Days</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_place">
+                            <div class="thumb">
+                                <img src="img/place/2.png" alt="">
+                                <a href="#" class="prise">$500</a>
+                            </div>
+                            <div class="place_info">
+                                <a href="#"><h3>Korola Megna</h3></a>
+                                <p>United State of America</p>
+                                <div class="rating_days d-flex justify-content-between">
+                                    <span class="d-flex justify-content-center align-items-center">
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <a href="#">(20 Review)</a>
+                                    </span>
+                                    <div class="days">
+                                        <i class="fa fa-clock-o"></i>
+                                        <a href="#">5 Days</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_place">
+                            <div class="thumb">
+                                <img src="img/place/3.png" alt="">
+                                <a href="#" class="prise">$500</a>
+                            </div>
+                            <div class="place_info">
+                                <a href="#"><h3>London</h3></a>
+                                <p>United State of America</p>
+                                <div class="rating_days d-flex justify-content-between">
+                                    <span class="d-flex justify-content-center align-items-center">
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <a href="#">(20 Review)</a>
+                                    </span>
+                                    <div class="days">
+                                        <i class="fa fa-clock-o"></i>
+                                        <a href="#">5 Days</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  {% include 'footer.html' %}
+{% endblock %}

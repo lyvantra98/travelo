@@ -424,6 +424,13 @@ h3 {
   .boxed-btn4.large-width {
     width: 220px; }
 
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none; }
+
 .section_title h3 {
   font-size: 38px;
   font-weight: 400;
@@ -577,68 +584,72 @@ h3 {
   background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
   height: 100%; }
-
-.card-signin {
-  border: 0;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1); }
-  .card-signin .card-title {
-    margin-bottom: 2rem;
-    font-weight: 300;
-    font-size: 1.5rem; }
-  .card-signin .card-body {
-    padding: 2rem; }
-
-.form-signin {
-  width: 100%; }
-  .form-signin .btn {
-    font-size: 80%;
-    border-radius: 5rem;
-    letter-spacing: .1rem;
-    font-weight: bold;
-    padding: 1rem;
-    transition: all 0.2s; }
-
-.form-label-group {
-  position: relative;
-  margin-bottom: 1rem; }
-  .form-label-group input {
-    height: auto;
-    border-radius: 2rem; }
-    .form-label-group input::-webkit-input-placeholder, .form-label-group input:-ms-input-placeholder, .form-label-group input::-ms-input-placeholder, .form-label-group input::-moz-placeholder, .form-label-group input::placeholder {
-      color: transparent; }
-    .form-label-group input:not(:placeholder-shown) {
-      padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-      padding-bottom: calc(var(--input-padding-y) / 3); }
-      .form-label-group input:not(:placeholder-shown) ~ label {
-        padding-top: calc(var(--input-padding-y) / 3);
-        padding-bottom: calc(var(--input-padding-y) / 3);
-        font-size: 12px;
-        color: #777; }
-  .form-label-group > input {
-    padding: var(--input-padding-y) var(--input-padding-x); }
-  .form-label-group > label {
-    padding: var(--input-padding-y) var(--input-padding-x);
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    margin-bottom: 0;
-    /* Override default `<label>` margin */
-    line-height: 1.5;
-    color: #495057;
+  .signin .card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1); }
+    .signin .card-signin .card-title {
+      margin-bottom: 2rem;
+      font-weight: 300;
+      font-size: 1.5rem; }
+    .signin .card-signin .card-body {
+      padding: 2rem; }
+  .signin .form-signin {
+    width: 100%; }
+    .signin .form-signin .btn {
+      font-size: 80%;
+      border-radius: 5rem;
+      letter-spacing: .1rem;
+      font-weight: bold;
+      padding: 1rem;
+      transition: all 0.2s; }
+  .signin .errorlist li {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: .25rem;
-    transition: all .1s ease-in-out; }
-
-.btn-google {
-  color: white;
-  background-color: #ea4335; }
-
-.btn-facebook {
-  color: white;
-  background-color: #3b5998; }
+    border-radius: .25rem; }
+  .signin .form-label-group {
+    position: relative;
+    margin-bottom: 1rem; }
+    .signin .form-label-group input {
+      height: auto;
+      border-radius: 2rem; }
+      .signin .form-label-group input::-webkit-input-placeholder, .signin .form-label-group input:-ms-input-placeholder, .signin .form-label-group input::-ms-input-placeholder, .signin .form-label-group input::-moz-placeholder, .signin .form-label-group input::placeholder {
+        color: transparent; }
+      .signin .form-label-group input:not(:placeholder-shown) {
+        padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+        padding-bottom: calc(var(--input-padding-y) / 3); }
+        .signin .form-label-group input:not(:placeholder-shown) ~ label {
+          padding-top: calc(var(--input-padding-y) / 3);
+          padding-bottom: calc(var(--input-padding-y) / 3);
+          font-size: 12px;
+          color: #777; }
+    .signin .form-label-group > input {
+      padding: var(--input-padding-y) var(--input-padding-x); }
+    .signin .form-label-group > label {
+      padding: var(--input-padding-y) var(--input-padding-x);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      /* Override default `<label>` margin */
+      line-height: 1.5;
+      color: #495057;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      transition: all .1s ease-in-out; }
+  .signin .btn-google {
+    color: white;
+    background-color: #ea4335; }
+  .signin .btn-facebook {
+    color: white;
+    background-color: #3b5998; }
 
 /* Fallback for Edge
 -------------------------------------------------- */
@@ -1918,6 +1929,38 @@ h3 {
           background: #FF4A52;
           color: #fff; }
 
+.destination-tour-info-outer {
+  background-color: #f5f5f5;
+  padding: 55px 0 20px; }
+  .destination-tour-info-outer .destination-tour-info-wrap {
+    margin-bottom: 18px; }
+    .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info {
+      color: #414141;
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 15px;
+      width: 50%;
+      float: left; }
+      .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info i {
+        color: #FF4A52;
+        width: 27px;
+        display: inline-block;
+        margin-right: 4px; }
+    .destination-tour-info-outer .destination-tour-info-wrap .destination-item-pdlr {
+      padding-left: 20px;
+      padding-right: 20px; }
+
+.core-container {
+  padding-right: 430px; }
+  @media only screen and (max-width: 999px) {
+    .core-container {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  @media only screen and (max-width: 767px) {
+    .core-container {
+      max-width: 500px;
+      padding-left: 15px;
+      padding-right: 15px; } }
 .destination_banner_wrap {
   background-image: url(../img/banner/destination.png);
   padding: 340px 0;
@@ -2204,41 +2247,6 @@ h3 {
       font-weight: 400; }
     .filter_result_wrap .filter_inner .nice-select.open .list {
       width: 100%; }
-
-.filter_result_wrap .range_slider_wrap span.range {
-  color: #040E27;
-  font-size: 16px;
-  font-weight: 400;
-  display: block;
-  margin-bottom: 15px; }
-
-.filter_result_wrap .range_slider_wrap p {
-  margin-top: 14px;
-  margin-bottom: 27px; }
-  .filter_result_wrap .range_slider_wrap p input {
-    background-color: transparent; }
-
-.filter_result_wrap .range_slider_wrap .ui-widget.ui-widget-content {
-  border: 0;
-  background: #FFD8DA; }
-
-.filter_result_wrap .range_slider_wrap .ui-slider-horizontal {
-  height: 2px; }
-
-.filter_result_wrap .range_slider_wrap .ui-state-default, .filter_result_wrap .range_slider_wrap .ui-widget-content .ui-state-default, .filter_result_wrap .range_slider_wrap .ui-widget-header .ui-state-default, .filter_result_wrap .range_slider_wrap .ui-button, .filter_result_wrap .range_slider_wrap html .ui-button.ui-state-disabled:hover, .filter_result_wrap .range_slider_wrap html .ui-button.ui-state-disabled:active {
-  border: 2px solid #FF4A52;
-  background: #fff;
-  font-weight: normal;
-  width: 14px;
-  height: 16px;
-  border-radius: 5px; }
-
-.filter_result_wrap .range_slider_wrap .ui-widget-header {
-  background: #FF4A52; }
-
-.filter_result_wrap .range_slider_wrap .ui-slider-horizontal .ui-slider-handle {
-  top: -7px;
-  margin-left: -.6em; }
 
 .filter_result_wrap .reset_btn button {
   width: 100%; }

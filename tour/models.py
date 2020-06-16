@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib import admin
+from django.db.models import Count
+from django.template.defaultfilters import truncatechars
 
 from tour.choices import *
 
@@ -28,10 +30,21 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+class Area(models.Model):
+  area_name = models.CharField(max_length=100, blank=True)
+  image = models.ImageField(upload_to='images/area')
+
+  def __str__(self):
+    return self.area_name
+
+@admin.register(Area)
+class AreaAdmin(admin.ModelAdmin):
+ list_display = ('area_name', 'image')
+
 class Destination(models.Model):
+  area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name='areas')
   location_from = models.CharField(max_length=100, blank=True)
   location_to = models.CharField(max_length=100, blank=True)
-  area = models.CharField(max_length=100, blank=True)
   destination_name = models.CharField(max_length=70, blank=True)
 
   def  __str__(self):
@@ -39,15 +52,15 @@ class Destination(models.Model):
 
 @admin.register(Destination)
 class DestinationAdmin(admin.ModelAdmin):
- list_display = ("id", "location_from", "location_to", "area",
-                 "destination_name")
+ list_display = ('id', 'location_from', 'location_to',
+                 'destination_name', 'area')
  list_per_page = 10
 
 class Tour(models.Model):
-  destination = models.OneToOneField(
+  destination = models.ForeignKey(
     Destination,
     on_delete=models.CASCADE,
-    primary_key=True,
+    related_name='tours'
   )
   tour_name = models.CharField(max_length=80, null=True, blank=True)
   experience_time = models.PositiveIntegerField(validators=[MinValueValidator(1)])
@@ -59,15 +72,24 @@ class Tour(models.Model):
   status_evaluete = models.IntegerField(choices=STATUS_E_CHOICES, default=0)
   detail_tour = models.TextField()
   votes = models.IntegerField(default=0)
-  image = models.ImageField(upload_to='images/tours')
 
   def __str__(self):
     return self.tour_name
 
+  @property
+  def short_tour_detail(self):
+    return truncatechars(self.detail_tour, 200)
+
+  def get_tour_list():
+    return Tour.objects.select_related('destination').prefetch_related('tour_photo','review_set').annotate(num_review=Count('review'))[:6]
+
+  def short_date_end_start(self):
+    return self.start_day.strftime('%d %b') + ' - ' + self.end_day.strftime('%d %b')
+
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
- list_display = ("tour_name", "experience_time", "price", "start_day",
-                 "end_day", "min_age", "max_people", "status_evaluete", "detail_tour")
+ list_display = ('id', 'tour_name', 'experience_time', 'price', 'start_day',
+                 'end_day', 'min_age', 'max_people', 'status_evaluete', 'short_tour_detail')
  list_per_page = 10
 
 class Booking(models.Model):
@@ -77,6 +99,22 @@ class Booking(models.Model):
   status_booking = models.IntegerField(choices=STATUS_B_CHOICES, default=0)
   booking_time = models.DateField(auto_now_add=True)
   people_number = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+
+  def __str__(self):
+    return self.profile.username + " " + self.tour.tour_name
+
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+  list_display = ('id', 'profile', 'tour', 'status_booking', 'booking_time', 'people_number')
+  list_per_page = 10
+
+class Photo(models.Model):
+  tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='tour_photo')
+  image = models.ImageField(upload_to='images/tours')
+
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+  list_display = ('tour', 'image')
 
 class Slider(models.Model):
   slider_image = models.ImageField(upload_to='images/sliders', blank=True)

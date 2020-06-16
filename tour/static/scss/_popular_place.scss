@@ -153,44 +153,6 @@
             }
         }
     }
-    .range_slider_wrap{
-        span.range{
-            color:#040E27;
-            font-size: 16px;
-            font-weight: 400;
-            display: block;
-            margin-bottom: 15px;
-        }
-        p{
-            margin-top: 14px;
-            margin-bottom: 27px;
-            input{
-                background-color: transparent; 
-            }
-        }
-        .ui-widget.ui-widget-content {
-            border: 0;
-            background: #FFD8DA;
-        }
-        .ui-slider-horizontal {
-            height: 2px;
-        }
-        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
-            border: 2px solid #FF4A52;
-            background: #fff;
-            font-weight: normal;
-            width: 14px;
-            height: 16px;
-            border-radius: 5px;
-        }
-        .ui-widget-header {
-            background: #FF4A52;
-        }
-        .ui-slider-horizontal .ui-slider-handle {
-            top: -7px;
-            margin-left: -.6em;
-        }
-    }
     .reset_btn{
         button{
             width: 100%;

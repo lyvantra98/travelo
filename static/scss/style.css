@@ -424,6 +424,13 @@ h3 {
   .boxed-btn4.large-width {
     width: 220px; }
 
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none; }
+
 .section_title h3 {
   font-size: 38px;
   font-weight: 400;
@@ -596,6 +603,15 @@ h3 {
       font-weight: bold;
       padding: 1rem;
       transition: all 0.2s; }
+  .signin .errorlist li {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem; }
   .signin .form-label-group {
     position: relative;
     margin-bottom: 1rem; }
@@ -1913,6 +1929,38 @@ h3 {
           background: #FF4A52;
           color: #fff; }
 
+.destination-tour-info-outer {
+  background-color: #f5f5f5;
+  padding: 55px 0 20px; }
+  .destination-tour-info-outer .destination-tour-info-wrap {
+    margin-bottom: 18px; }
+    .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info {
+      color: #414141;
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 15px;
+      width: 50%;
+      float: left; }
+      .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info i {
+        color: #FF4A52;
+        width: 27px;
+        display: inline-block;
+        margin-right: 4px; }
+    .destination-tour-info-outer .destination-tour-info-wrap .destination-item-pdlr {
+      padding-left: 20px;
+      padding-right: 20px; }
+
+.core-container {
+  padding-right: 430px; }
+  @media only screen and (max-width: 999px) {
+    .core-container {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  @media only screen and (max-width: 767px) {
+    .core-container {
+      max-width: 500px;
+      padding-left: 15px;
+      padding-right: 15px; } }
 .destination_banner_wrap {
   background-image: url(../img/banner/destination.png);
   padding: 340px 0;
@@ -2199,41 +2247,6 @@ h3 {
       font-weight: 400; }
     .filter_result_wrap .filter_inner .nice-select.open .list {
       width: 100%; }
-
-.filter_result_wrap .range_slider_wrap span.range {
-  color: #040E27;
-  font-size: 16px;
-  font-weight: 400;
-  display: block;
-  margin-bottom: 15px; }
-
-.filter_result_wrap .range_slider_wrap p {
-  margin-top: 14px;
-  margin-bottom: 27px; }
-  .filter_result_wrap .range_slider_wrap p input {
-    background-color: transparent; }
-
-.filter_result_wrap .range_slider_wrap .ui-widget.ui-widget-content {
-  border: 0;
-  background: #FFD8DA; }
-
-.filter_result_wrap .range_slider_wrap .ui-slider-horizontal {
-  height: 2px; }
-
-.filter_result_wrap .range_slider_wrap .ui-state-default, .filter_result_wrap .range_slider_wrap .ui-widget-content .ui-state-default, .filter_result_wrap .range_slider_wrap .ui-widget-header .ui-state-default, .filter_result_wrap .range_slider_wrap .ui-button, .filter_result_wrap .range_slider_wrap html .ui-button.ui-state-disabled:hover, .filter_result_wrap .range_slider_wrap html .ui-button.ui-state-disabled:active {
-  border: 2px solid #FF4A52;
-  background: #fff;
-  font-weight: normal;
-  width: 14px;
-  height: 16px;
-  border-radius: 5px; }
-
-.filter_result_wrap .range_slider_wrap .ui-widget-header {
-  background: #FF4A52; }
-
-.filter_result_wrap .range_slider_wrap .ui-slider-horizontal .ui-slider-handle {
-  top: -7px;
-  margin-left: -.6em; }
 
 .filter_result_wrap .reset_btn button {
   width: 100%; }

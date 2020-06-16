@@ -79,10 +79,10 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_destination">
                         <div class="thumb">
-                            <img src="{% static 'img/destination/1.png' %}" alt="">
+                            <img src="{{d.image.url}}" alt="">
                         </div>
                         <div class="content">
-                            <p class="d-flex align-items-center"> {{d.area}} <a href="travel_destination.html">  {{d.num_tours}} Places</a> </p>
+                            <p class="d-flex align-items-center"> {{d.area_name}} <a href="travel_destination.html">  {{d.num_tour}} Places</a> </p>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="{{p.image.url}}" alt="">
+                            <img src="{{p.tour_photo.first.image.url}}" alt="">
                             <a href="#" class="prise">{{p.price}}</a>
                         </div>
                         <div class="place_info">
@@ -171,13 +171,12 @@
           <div class="row">
               <div class="col-lg-12">
                   <div class="more_place_btn text-center">
-                      <a class="boxed-btn4" href="#">More Places</a>
+                      <a class="boxed-btn4" href="{% url 'destination' %}">More Places</a>
                   </div>
               </div>
           </div>
       </div>
   </div>
-
 
   <div class="video_area video_bg overlay">
       <div class="container">
@@ -203,7 +202,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="single_travel text-center">
                       <div class="icon">
-                          <img src="img/svg_icon/1.svg" alt="">
+                          <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
                       </div>
                       <h3>Comfortable Journey</h3>
                       <p>A wonderful serenity has taken to the possession of my entire soul.</p>
@@ -212,7 +211,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="single_travel text-center">
                       <div class="icon">
-                          <img src="img/svg_icon/2.svg" alt="">
+                          <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
                       </div>
                       <h3>Luxuries Hotel</h3>
                       <p>A wonderful serenity has taken to the possession of my entire soul.</p>
@@ -221,7 +220,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="single_travel text-center">
                       <div class="icon">
-                          <img src="img/svg_icon/3.svg" alt="">
+                          <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
                       </div>
                       <h3>Travel Guide</h3>
                       <p>A wonderful serenity has taken to the possession of my entire soul.</p>
@@ -243,7 +242,7 @@
                               <div class="col-lg-8">
                                   <div class="single_testmonial text-center">
                                       <div class="author_thumb">
-                                          <img src="img/testmonial/author.png" alt="">
+                                          <img src="{% static 'img/testmonial/author.png' %}" alt="">
                                       </div>
                                       <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
                                       <div class="testmonial_author">
@@ -258,7 +257,7 @@
                               <div class="col-lg-8">
                                   <div class="single_testmonial text-center">
                                       <div class="author_thumb">
-                                          <img src="img/testmonial/author.png" alt="">
+                                          <img src="{% static 'img/testmonial/author.png' %}" alt="">
                                       </div>
                                       <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
                                       <div class="testmonial_author">
@@ -273,7 +272,7 @@
                               <div class="col-lg-8">
                                   <div class="single_testmonial text-center">
                                       <div class="author_thumb">
-                                          <img src="img/testmonial/author.png" alt="">
+                                          <img src="{% static 'img/testmonial/author.png' %}" alt="">
                                       </div>
                                       <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
                                       <div class="testmonial_author">
@@ -289,37 +288,6 @@
       </div>
   </div>
   <!-- /testimonial_area  -->
-
-
-  <div class="recent_trip_area">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-lg-6">
-                  <div class="section_title text-center mb_70">
-                      <h3>Recent Trips</h3>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-            {%for b in blogs %}
-              <div class="col-lg-4 col-md-6">
-                  <div class="single_trip">
-                      <div class="thumb">
-                          <img src="{{b.image.url}}" alt="">
-                      </div>
-                      <div class="info">
-                          <div class="date">
-                              <span>{{b.date}}</span>
-                          </div>
-                          <a href="#">
-                              <h3>{{b.title}}</h3>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-            {% endfor %}
-          </div>
-      </div>
-  </div>
+   {% include 'recent_trips.html' %}
   {% include 'footer.html' %}
 {% endblock %}

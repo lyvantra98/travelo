@@ -12,10 +12,6 @@ $(window).on('scroll', function () {
 	}
 });
 
-
-
-
-
 $(document).ready(function(){
 
 // mobile_menu
@@ -95,21 +91,6 @@ $('.testmonial_active').owlCarousel({
   }
 });
 
-$( function() {
-  $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 600,
-      values: [ 75, 300 ],
-      slide: function( event, ui ) {
-          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-  });
-  $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-} );
-
-
 // for filter
   // init Isotope
   var $grid = $('.grid').isotope({
@@ -133,11 +114,11 @@ $( function() {
     $(this).addClass('active');
     event.preventDefault();
 	});
-  
+
   // wow js
   new WOW().init();
 
-  // counter 
+  // counter
   $('.counter').counterUp({
     delay: 10,
     time: 10000
@@ -310,9 +291,29 @@ $(document).ready(function() {
 	});
 });
 
+//back tot top
+$(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
 
+        $('#back-to-top').show();
 
-//------- Mailchimp js --------//  
+});
+
+//------- Mailchimp js --------//
 function mailChimp() {
   $('#mc_embed_signup').find('form').ajaxChimp();
 }
@@ -339,13 +340,5 @@ mailChimp();
           $('select').niceSelect();
         });
 
-        // prise slider 
-        
+})(jQuery);
 
-
-
-
-
-
-
-})(jQuery);	

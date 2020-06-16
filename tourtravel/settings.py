@@ -98,10 +98,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'tour.views.EmailOrUsernameModelBackend',
-    'django.contrib.auth.backends.ModelBackend'
-)
+AUTHENTICATION_BACKENDS =[
+    "django.contrib.auth.backends.ModelBackend",
+    "tour.backends.EmailOrUsernameModelBackend",
+]
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
