@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinValueValidator
 from django.core.exceptions import ValidationError
 
 from tour.choices import *
@@ -31,9 +31,28 @@ class SignUpForm(UserCreationForm):
         raise ValidationError('Account with that phone already exists')
     return phone
 
+class BookingForm(forms.ModelForm):
+  people_number = forms.IntegerField(widget= forms.TextInput(
+      attrs={'placeholder':'People Number','type':'number','min':'1'}))
+
+  def __init__(self, *args, **kwargs):
+    self.author = kwargs.pop('author',None)
+    self.tour = kwargs.pop('tour',None)
+    super().__init__(*args, **kwargs)
+
+  def save(self, commit=True):
+    booking = super().save(commit=False)
+    booking.profile = self.author
+    booking.tour = self.tour
+    booking.save()
+
+  class Meta:
+    model = Booking
+    fields = ('people_number',)
+
 class Tour(forms.ModelForm):
 
   class Meta:
     models = Tour
-    fields = ['tour_name', 'image']
+    fields = ('tour_name', 'image')
 

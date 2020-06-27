@@ -9,6 +9,18 @@ from django.template.defaultfilters import truncatechars
 
 from tour.choices import *
 
+GENDER_CHOICES = (
+  (0, 'Male'), (1, 'Female')
+)
+STATUS_E_CHOICES = (
+  (0, 'Do not'),
+  (1, 'Done')
+)
+STATUS_B_CHOICES = (
+  (0, 'Waiting'),
+  (1, 'Done')
+)
+
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
   birthdate = models.DateField(null=True, blank=True)
@@ -93,7 +105,6 @@ class TourAdmin(admin.ModelAdmin):
  list_per_page = 10
 
 class Booking(models.Model):
-
   profile = models.ForeignKey(User, on_delete=models.CASCADE)
   tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
   status_booking = models.IntegerField(choices=STATUS_B_CHOICES, default=0)

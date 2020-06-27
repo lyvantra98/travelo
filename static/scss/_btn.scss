@@ -25,6 +25,21 @@
         width: 220px;
     }
 }
+.boxed-btn2 {
+    background: #FF4A52 ;
+    color: #fff;
+    font-family: $font1;
+    &:hover{
+        background: #1EC6B6 ;
+        color: #fff !important;
+    }
+    &:focus{
+        outline: none;
+    }
+    &.large-width{
+        width: 220px;
+    }
+}
 .boxed-btn3 {
     background: #1EC6B6 ;
 	color: #fff;

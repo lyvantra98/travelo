@@ -370,6 +370,18 @@ h3 {
   .boxed-btn.large-width {
     width: 220px; }
 
+.boxed-btn2 {
+  background: #FF4A52;
+  color: #fff;
+  font-family: "Rubik", sans-serif; }
+  .boxed-btn2:hover {
+    background: #1EC6B6;
+    color: #fff !important; }
+  .boxed-btn2:focus {
+    outline: none; }
+  .boxed-btn2.large-width {
+    width: 220px; }
+
 .boxed-btn3 {
   background: #1EC6B6;
   color: #fff;
@@ -1932,35 +1944,22 @@ h3 {
 .destination-tour-info-outer {
   background-color: #f5f5f5;
   padding: 55px 0 20px; }
-  .destination-tour-info-outer .destination-tour-info-wrap {
-    margin-bottom: 18px; }
-    .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info {
-      color: #414141;
-      font-weight: 500;
-      font-size: 15px;
-      margin-bottom: 15px;
-      width: 50%;
-      float: left; }
-      .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info i {
-        color: #FF4A52;
-        width: 27px;
-        display: inline-block;
-        margin-right: 4px; }
-    .destination-tour-info-outer .destination-tour-info-wrap .destination-item-pdlr {
-      padding-left: 20px;
-      padding-right: 20px; }
+  .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info {
+    color: #414141;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 15px;
+    width: 50%;
+    float: left; }
+    .destination-tour-info-outer .destination-tour-info-wrap .destination-tour-info i {
+      color: #FF4A52;
+      width: 27px;
+      display: inline-block;
+      margin-right: 4px; }
+  .destination-tour-info-outer .destination-tour-info-wrap .destination-item-pdlr {
+    padding-left: 20px;
+    padding-right: 20px; }
 
-.core-container {
-  padding-right: 430px; }
-  @media only screen and (max-width: 999px) {
-    .core-container {
-      padding-left: 20px;
-      padding-right: 20px; } }
-  @media only screen and (max-width: 767px) {
-    .core-container {
-      max-width: 500px;
-      padding-left: 15px;
-      padding-right: 15px; } }
 .destination_banner_wrap {
   background-image: url(../img/banner/destination.png);
   padding: 340px 0;
@@ -1994,15 +1993,15 @@ h3 {
     color: #fff; }
 
 .destination_details_info {
-  padding-bottom: 150px;
+  padding-bottom: 110px;
   padding-top: 70px; }
   @media (max-width: 767px) {
     .destination_details_info {
-      padding-top: 70px;
+      padding-top: 50px;
       padding-bottom: 70px; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .destination_details_info {
-      padding-top: 70px;
+      padding-top: 50px;
       padding-bottom: 70px; } }
   .destination_details_info .bordered_1px {
     border-top: 1px solid #E4E6E8;

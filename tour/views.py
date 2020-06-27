@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Count
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
@@ -8,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import *
 
-from tour.forms import SignUpForm
+from tour.forms import SignUpForm, BookingForm
 
 # Register
 def signup(request):
@@ -83,9 +84,26 @@ def destination(request):
     }
     return render(request, 'destination.html', context)
 
+
 def destination_detail(request,pk):
     tour = get_object_or_404(Tour, pk=pk)
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = BookingForm(request.POST, author=request.user, tour=tour)
+            if form.is_valid():
+                booking = form.save();
+                return redirect('index')
+            else:
+                return redirect('destination_detail', pk=pk)
+        else:
+            return redirect('login')
+    else:
+        form = BookingForm()
+
     context = {
-        'tour' : tour
+        'tour' : tour,
+        'form':form
     }
     return render(request, 'destination_detail.html', context)
+def contact(request):
+    return render(request, 'contact.html')
