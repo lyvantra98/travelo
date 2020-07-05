@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  {% include 'header.html' %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-sm-offset-1" id="printarea">
+        <div class="widget-box">
+          <div class="widget-header widget-header-large">
+            <h3 class="widget-title grey lighter">
+              <img class="ace-icon" src="{% static '/img/receipt.png' %}">
+              Travel
+            </h3>
+
+            <div class="widget-toolbar no-border invoice-info">
+              <span class="invoice-info-label">Ngày:</span>
+              <span class="blue">{{booking.booking_time|date:"Y-m-d"}}</span>
+            </div>
+          </div>
+          <div class="widget-body">
+            <div class="widget-main padding-24">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-xs-11">
+                      <b>Thông tin</b>
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="list-unstyled spaced">
+                      <li>
+                        <i class="ace-icon fa fa-caret-right blue"></i>Họ và tên:
+                        <b class="red">{{user.first_name}} {{user.last_name}}</b>
+                      </li>
+
+                      <li>
+                        <i class="ace-icon fa fa-caret-right blue"></i>Tỉnh thành:
+                        <b class="red">{{user.profile.country}}</b>
+                      </li>
+
+                      <li>
+                        <i class="ace-icon fa fa-caret-right blue"></i>Email:
+                        <b class="red">{{user.email}}</b>
+                      </li>
+
+                      <li>
+                        <i class="ace-icon fa fa-caret-right blue"></i>Điện thoại:
+                        <b class="red">{{user.profile.phone_number}}</b>
+                      </li>
+
+                      <li class="divider"></li>
+                    </ul>
+                  </div>
+                </div><!-- /.col -->
+              </div><!-- /.row -->
+
+              <div class="space"></div>
+
+              <div>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Ngày khởi hành</th>
+                      <th>Nơi khởi hành</th>
+                      <th >Tour</th>
+                      <th >Số hành khách</th>
+                      <th>Giá</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{booking.tour.start_day|date:"Y-m-d"}}
+                      </td>
+                      <td>
+                        {{booking.tour.destination.location_from}}
+                      </td>
+                      <td >
+                        {{booking.tour.tour_name}}
+                      </td>
+                      <td>{{booking.people_number}} </td>
+                      <td>{{booking.tour.price|intcomma}}đ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="hr hr8 hr-double hr-dotted"></div>
+
+              <div class="row">
+                <div class="col-sm-5 pull-right">
+                  <h4 class="pull-right">
+                    Tổng tiền :
+                    <span class="red">{{booking.total_price|intcomma}}đ</span>
+                  </h4>
+                </div>
+
+              </div>
+
+              <div class="space-6"></div>
+              <div class="well center">Cảm ơn đã chọn sản phẩm của công ty chúng tôi.
+              </div>
+              <div>
+                <a class="btn bntcmt btn-sm shadow-none" href="{% url 'process' %}">Thanh toán ngay bây giờ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

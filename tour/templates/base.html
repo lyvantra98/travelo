@@ -25,14 +25,11 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 
   <link href="{% sass_src 'scss/style.scss' %}" rel="stylesheet" type="text/css">
-
 </head>
 <body>
   {% block content %}
   {% endblock %}
-  <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
-    <i class="fa fa-angle-up"></i>
-  </a>
+
   <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
   <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>
@@ -62,6 +59,7 @@
   <script src="{% static 'js/mail-script.js' %}"></script>
 
   <script src="{% static 'js/main.js' %}"></script>
+  <script src="https://js.stripe.com/v3/"></script>
   <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',

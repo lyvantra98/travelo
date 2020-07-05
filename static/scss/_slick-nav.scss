@@ -27,10 +27,10 @@
         a{
             &:hover{
                 background: transparent;
-                color: #FF4A52;
+                color: #74C7E5;
             }
             &.active{
-                color: #FF4A52;
+                color: #74C7E5;
             }
             i{
                 @media #{$mobile_device} {
@@ -73,7 +73,7 @@
     float: right;
     font-size: 22px;
     position: relative;
-    top: -9px;  
+    top: -9px;
 }
 .slicknav_btn {
 	background-color: transparent;

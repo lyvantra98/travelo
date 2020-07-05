@@ -1,6 +1,7 @@
 import os
 import pymysql
 import smtplib
+import django_heroku
 
 pymysql.version_info = (1, 3, 13, "final", 0)
 pymysql.install_as_MySQLdb()
@@ -17,8 +18,10 @@ SECRET_KEY = '2s3w=fxkk(j80cc=a!%h3#2r4b$igh=&mar*k%&#edgq0-&f5w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['travelo.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['travelo.herokuapp.com']
 
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # Application definition
 
@@ -31,6 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'sass_processor',
+    'import_export',
+    'paypal.standard.ipn',
+    'django.contrib.humanize',
     'crispy_forms',
     'tour',
 ]
@@ -44,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tourtravel.urls'
@@ -80,6 +87,8 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
+        'CHARSET': 'utf8',
+        'COLLATION': 'utf8_general_ci'
     }
 }
 
@@ -115,7 +124,7 @@ AUTHENTICATION_BACKENDS =[
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
 USE_I18N = True
 
@@ -130,17 +139,16 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 # STATIC_ROOT = 'static/'
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'static'),
+# )
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
@@ -164,4 +172,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'tealy123321@gmail.com'
 EMAIL_HOST_PASSWORD = 'deocomatkhau'
 EMAIL_USE_TLS = True
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+SOCIAL_AUTH_FACEBOOK_KEY = '1001993430216008'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4fb679f00d6c40d3ae10940d786a479d'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY= '274123049970-9tfgcmb43136gqalv12phkqu7j0cq8on.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'v37EHlo91DpBJ3tfP-ggWjat'
+PAYPAL_RECEIVER_EMAIL = 'sb-501eq2592178@business.example.com'
+PAYPAL_TEST = True
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51H40eYE93EuEbUzYUWrGQrP26SpB93GANQk36A6mJ0xVzILaoJCamwzhEtREoPFE3tSXRopBHwYUbsxi1mNEqNZT007Mzvoczr'
+STRIPE_SECRET_KEY = 'sk_test_51H40eYE93EuEbUzYEvtpWapup8Ukh1AMw3hgWIUYTfHpYGiZdvetDcjaO3v8HdVuPNYoUyN3K2gc8JzCT0mPRo8N00qvNnWPvU'

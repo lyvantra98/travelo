@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{p.first_name}} {{p.last_name}} {% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <div class="container">
+      <div class="row" id="user-profile">
+          <div class="col-lg-3 col-md-4 col-sm-4">
+              <div class="main-box clearfix">
+                  <h2>{{p.first_name}} {{p.last_name}}</h2>
+                  {% if p.profile.image %}
+                    <img src="{{p.profile.image.url}}" alt="" class="profile-img img-responsive center-block">
+                  {% else %}
+                    <img src="{% static 'img/profile/avatar.png' %}" alt="" class="profile-img img-responsive center-block">
+                  {% endif %}
+              </div>
+          </div>
+          <div class="col-lg-9 col-md-8 col-sm-8">
+              <div class="main-box clearfix">
+                  <div class="profile-header">
+                      <h3><span>Thông tin người dùng</span></h3>
+                      <a href="{% url 'editprofile' %}" class="btn edit-profile">
+                          <i class="fa fa-pencil-square fa-lg"></i> Chỉnh sửa
+                      </a>
+                  </div>
+                  <div class="row profile-user-info">
+                      <div class="col-sm-8">
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Họ và tên:
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.first_name}} {{p.last_name}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Thành phố:
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.profile.country}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Email:
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.email}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Điện thoại:
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.profile.phone_number}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Giới tính:
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {% if p.profile.gender is 0 %}
+                                    Nam
+                                  {% else %}
+                                    Nữ
+                                  {% endif %}
+
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Ngày sinh:
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.profile.birthdate|date:"Y-m-d"}}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="tabs-wrapper profile-tabs">
+                    <h6><i class="fa fa-history"></i>
+                    Lịch sử đặt vé</h6>
+                    <div class="tab-content">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    {% for b in p.booking.all %}
+                                      <tr>
+                                        <td class="text-center">
+                                            <i class="fa fa-comment"></i>
+                                        </td>
+                                        <td>
+                                            Đã đặt vé <a href="#">{{b.tour.tour_name}}</a>.
+                                        </td>
+                                        <td>
+                                            {{b.booking_time|date:"Y-m-d"}}
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

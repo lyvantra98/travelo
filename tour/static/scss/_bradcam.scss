@@ -2,13 +2,13 @@
     background-image: url(../img/banner/bradcam.png);
 }
 .bradcam_bg_2{
-    background-image: url(../img/banner/bradcam2.png);
+    background-image: url(../img/banner/banner-destination.jpg);
 }
 .bradcam_bg_3{
-    background-image: url(../img/banner/bradcam3.png);
+    background-image: url(../img/banner/banner-about.jpg);
 }
 .bradcam_bg_4{
-    background-image: url(../img/banner/bradcam4.png);
+    background-image: url(../img/banner/banner-contact.jpg);
 }
 .bradcam_area{
     background-size: cover;
@@ -74,13 +74,13 @@
     &.Extra_padding{
         padding: 399px 0;
         @media #{$mobile_device} {
-            padding: 150px 0; 
+            padding: 150px 0;
         }
         @media #{$tablet_device} {
-            padding: 150px 0; 
+            padding: 150px 0;
         }
         @media #{$mid_device} {
-            padding: 150px 0; 
+            padding: 150px 0;
         }
     }
 }

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Travel{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <div class="popular_places_area">
+      <div class="container">
+          <div class="row">
+              {% for d in arealist.areas.all %}
+                  {% for t in d.tours.all %}
+                    <div class="col-lg-4 col-md-6">
+                      <div class="single_place">
+                          <div class="thumb">
+                              <img src="{{t.tour_photo.first.image.url}}" alt="">
+                              <a href="/destination/{{t.id}}" class="prise">{{t.price|intcomma}}đ</a>
+                          </div>
+                          <div class="place_info">
+                              <a href="/destination/{{t.id}}"><h3>{{t.short_tour_name}}</h3></a>
+                              <p>{{d.area}}</p>
+                              <div class="rating_days d-flex justify-content-between">
+                                  <span class="d-flex justify-content-center align-items-center">
+                                       <i class="fa fa-star"></i>
+                                       <i class="fa fa-star"></i>
+                                       <i class="fa fa-star"></i>
+                                       <i class="fa fa-star"></i>
+                                       <i class="fa fa-star"></i>
+                                       <a href="#">({{t.review.count}} Review)</a>
+                                  </span>
+                                  <div class="days">
+                                      <i class="fa fa-clock-o"></i>
+                                      <a href="#">{{t.experience_time}} Days</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+              {% endfor %}
+          </div>
+      </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

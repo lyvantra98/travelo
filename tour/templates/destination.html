@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
 {% load static %}
 
 {% block title %} Destination {% endblock %}
@@ -11,8 +12,8 @@
           <div class="row">
               <div class="col-xl-12">
                   <div class="bradcam_text text-center">
-                      <h3>Destinations</h3>
-                      <p>Pixel perfect design with awesome contents</p>
+                      <h3>Điểm du lịch</h3>
+                      <p>Chúng tôi lựa chọn cho bạn khách sạn phù hợp, tour đặc sắc, thông tin du lịch chi tiết kèm mức giá hấp dẫn.</p>
                   </div>
               </div>
           </div>
@@ -26,24 +27,17 @@
           <div class="row align-items-center">
               <div class="col-lg-3">
                   <div class="form_area">
-                      <h3>Where you want to go?</h3>
+                      <h3>Bạn muốn đi đâu?</h3>
                   </div>
               </div>
               <div class="col-lg-9">
                   <div class="search_wrap">
-                      <form class="search_form" action="#">
+                      <form class="search_form" action="{% url 'search_results' %}" method="get">
                           <div class="input_field">
-                              <input type="text" placeholder="Where to go?">
+                              <input name="q" type="text" placeholder="Bạn muốn đi đâu?">
                           </div>
                           <div class="input_field">
                               <input id="datepicker" placeholder="Date">
-                          </div>
-                          <div class="input_field">
-                              <select>
-                                  <option data-display="Travel type">Travel type</option>
-                                  <option value="1">Some option</option>
-                                  <option value="2">Another option</option>
-                              </select>
                           </div>
                           <div class="search_btn">
                               <button class="boxed-btn4 " type="submit" >Search</button>
@@ -64,10 +58,10 @@
                     <div class="single_place">
                         <div class="thumb">
                             <img src="{{p.tour_photo.first.image.url}}" alt="">
-                            <a href="/destination/{{p.id}}" class="prise">{{p.price}}</a>
+                            <a href="/destination/{{p.id}}" class="prise">{{p.price|intcomma}}đ</a>
                         </div>
                         <div class="place_info">
-                            <a href="/destination/{{p.id}}"><h3>{{p.destination.destination_name}}</h3></a>
+                            <a href="/destination/{{p.id}}"><h3>{{p.short_tour_name}}</h3></a>
                             <p>{{p.destination.area}}</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
@@ -113,41 +107,10 @@
           </div>
       </div>
   </div>
-  <!-- newletter_area_start  -->
-  <div class="newletter_area overlay">
-      <div class="container">
-          <div class="row justify-content-center align-items-center">
-              <div class="col-lg-10">
-                  <div class="row align-items-center">
-                      <div class="col-lg-5">
-                          <div class="newsletter_text">
-                              <h4>Subscribe Our Newsletter</h4>
-                              <p>Subscribe newsletter to get offers and about
-                                  new places to discover.</p>
-                          </div>
-                      </div>
-                      <div class="col-lg-7">
-                          <div class="mail_form">
-                              <div class="row no-gutters">
-                                  <div class="col-lg-9 col-md-8">
-                                      <div class="newsletter_field">
-                                          <input type="email" placeholder="Your mail" >
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-3 col-md-4">
-                                      <div class="newsletter_btn">
-                                          <button class="boxed-btn4 " type="submit" >Subscribe</button>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- newletter_area_end  -->
+  <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  {% include 'newletter.html' %}
   {% include 'recent_trips.html' %}
   {% include 'footer.html' %}
 {% endblock %}

@@ -50,6 +50,18 @@
                 @media #{$mobile_device} {
                     margin-bottom: 20px;
                 }
+                a{
+                    font-family: 'Pacifico', cursive;
+                    font-size: 30px;
+                    color: #007bff;
+                    img{
+                        height: 41px;
+                        width: 30px;
+                    }
+                    &:hover{
+                        color: #0056B3
+                    }
+                }
             }
             p {
 
@@ -64,7 +76,7 @@
                         color: $btn-bg;
                     }
                 }
-            
+
             }
             p.footer_text{
                 font-size: 16px;
@@ -84,7 +96,7 @@
                     a{
                     font-weight: 500;
                     color: #B2B2B2;
-                    
+
                     &:hover{
                         color: $btn-bg;
                         border-bottom: 1px solid $btn-bg
@@ -166,7 +178,7 @@
                     width: 33.33%;
                     float: left;
                     padding: 7.5px;
-                    
+
                     overflow: hidden;
                     img{
                         width: 100%;

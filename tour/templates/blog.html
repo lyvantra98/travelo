@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <!--================Blog Area =================-->
+  <section class="blog_area section-padding">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 mb-5 mb-lg-0">
+                  <div class="blog_left_sidebar">
+                    {% for b in blogs %}
+                      <article class="blog_item">
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{{b.image.url}}" alt="">
+                            <a href="/blog/{{b.id}}" class="blog_item_date">
+                                <h3>{{b.date.day}}</h3>
+                                <p>{{b.month_name}}</p>
+                            </a>
+                        </div>
+
+                        <div class="blog_details">
+                            <a class="d-inline-block" href="/blog/{{b.id}}">
+                                <h2>{{b.title}}</h2>
+                            </a>
+                            <p>{{b.short_blog_content}}</p>
+                            <ul class="blog-info-link">
+                                <li><a href="#"><i class="fa fa-user"></i>{{b.user.first_name}} {{b.user.last_name}}</a></li>
+                            </ul>
+                        </div>
+                      </article>
+                    {% endfor %}
+                      <nav class="blog-pagination justify-content-center d-flex">
+                          {% if blogs.has_other_pages %}
+                            <ul class="pagination">
+                              {% if blogs.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ blogs.previous_page_number }}">&laquo;</a></li>
+                              {% else %}
+                                <li class="page-item"><a class="page-link">&laquo;</a></li>
+                              {% endif %}
+                              {% for i in blogs.paginator.page_range %}
+                                {% if blogs.number == i %}
+                                  <li class="page-item"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a></li>
+                                {% else %}
+                                  <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                              {% endfor %}
+                              {% if blogs.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ blogs.next_page_number }}">&raquo;</a></li>
+                              {% else %}
+                                <li class="page-item"><a class="page-link">&raquo;</a></li>
+                              {% endif %}
+                            </ul>
+                          {% endif %}
+                      </nav>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="blog_right_sidebar">
+                      <aside class="single_sidebar_widget post_category_widget">
+                          <h4 class="widget_title">Thể loại</h4>
+                          <ul class="list cat-list">
+                              <li>
+                                {% for b in tag%}
+                                  <a href="#" class="d-flex">
+                                    <p>{{b.tag}}</p>
+                                    <p>({{b.num_tag}})</p>
+                                  </a>
+                                {% endfor %}
+                              </li>
+                          </ul>
+                      </aside>
+
+                      <aside class="single_sidebar_widget popular_post_widget">
+                          <h3 class="widget_title">Bài đăng gần đây</h3>
+                          {% for rb in recent_post %}
+                            <div class="media post_item">
+                              <img src="{{rb.image.url}}" alt="post">
+                              <div class="media-body">
+                                  <a href="/blog/{{rb.id}}">
+                                      <h3>{{rb.short_blog_title}}</h3>
+                                  </a>
+                                  <p>{{rb.date}}</p>
+                              </div>
+                            </div>
+                          {% endfor %}
+                      </aside>
+                      <aside class="single_sidebar_widget newsletter_widget">
+                          <h4 class="widget_title">Bản tin</h4>
+
+                          <form action="#">
+                              <div class="form-group">
+                                  <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = 'Enter email'" placeholder='Nhập mail' required>
+                              </div>
+                              <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                  type="submit">Theo dõi</button>
+                          </form>
+                      </aside>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================Blog Area =================-->
+  <div class="col-lg-8 posts-list">
+    <div class="comment-form">
+      <h4>Đăng bài</h4>
+      <form class="form-contact comment_form" method="post" id="commentForm" enctype="multipart/form-data">
+        {% csrf_token %}
+         <div class="row">
+            <div class="col-12">
+               <div class="form-group">
+                  {{form.content}}
+               </div>
+            </div>
+            <div class="col-sm-6">
+               <div class="form-group">
+                  {{form.title}}
+               </div>
+            </div>
+            <div class="col-sm-6">
+               <div class="form-group">
+                  {{form.tag}}
+               </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                  {{form.image}}
+                </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Đăng bài</button>
+         </div>
+      </form>
+    </div>
+  </div>
+  <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  {% include 'footer.html' %}
+{% endblock %}

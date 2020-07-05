@@ -28,7 +28,8 @@
         }
         .thumb{
             img{
-                width: 100%;
+                width: 362px;
+                height: 204px;
                 @include border-radius(5px);
             }
         }
@@ -63,10 +64,10 @@
             @include transform(translateY(-10px));
             .content{
                 p{
-                    color: #FF4A52;
+                    color: #74C7E5;
                     @include transition(.3s);
                     a{
-                        background: #FF4A52;
+                        background: #74C7E5;
                         color: #fff;
                     }
                 }
@@ -87,7 +88,7 @@
             width: 50%;
             float: left;
             i{
-                color: #FF4A52;
+                color: #74C7E5;
                 width: 27px;
                 display: inline-block;
                 margin-right: 4px;
@@ -102,7 +103,6 @@
 
 // destination_banner_wrap
 .destination_banner_wrap{
-    background-image: url(../img/banner/destination.png);
     padding: 340px 0;
     background-size: cover;
     background-position: center center;
@@ -140,14 +140,14 @@
 }
 
 .destination_details_info{
-    padding-bottom: 110px;
+    padding-bottom: 50px;
     padding-top: 70px;
     @media #{$mobile_device} {
-        padding-top: 50px;
+        padding-top: 25px;
         padding-bottom: 70px;
     }
     @media #{$tablet_device} {
-        padding-top: 50px;
+        padding-top: 25px;
         padding-bottom: 70px;
     }
     .bordered_1px{

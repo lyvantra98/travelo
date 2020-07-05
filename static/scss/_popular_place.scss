@@ -16,7 +16,8 @@
             position: relative;
             overflow: hidden;
             img{
-                width: 100%;
+                width: 350px;
+                height: 197px;
             }
             .prise{
                 position: absolute;
@@ -77,13 +78,13 @@
             @include box-shadow(0 10px 20px rgba(0, 0, 0, .05));
             .place_info{
                 h3{
-                    color: #FF4A52;
+                    color: #74C7E5;
 
                 }
             }
             .thumb{
                 .prise{
-                    background: #FF4A52;
+                    background: #74C7E5;
                 }
             }
         }

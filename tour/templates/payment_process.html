@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Pay using PayPal{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <div class="container">
+    <h6>Thanh toán bằng PayPal</h2>
+    {{ form.render }}
+    <h6>Thanh toán bằng Stripe</h6>
+    <div>
+      <a href="#" id="submitBtn">
+        <img src="{% static 'img/payment/stripe.jpg' %}" style="width:171px; height: 47px; border-radius: 5px; padding-bottom: 5px">
+      </a>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

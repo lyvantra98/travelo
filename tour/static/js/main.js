@@ -12,7 +12,6 @@ $(window).on('scroll', function () {
 	}
 });
 
-
 $(document).ready(function(){
 
 // mobile_menu
@@ -313,7 +312,32 @@ $(document).ready(function(){
         $('#back-to-top').show();
 
 });
+// Get Stripe publishable key
+fetch("/config/")
+.then((result) => { return result.json(); })
+.then((data) => {
+  // Initialize Stripe.js
+  const stripe = Stripe(data.publicKey);
 
+  // new
+  // Event handler
+  var submitstripe = document.querySelector("#submitBtn");
+    if (submitstripe) {
+      submitstripe.addEventListener("click", () => {
+      // Get Checkout Session ID
+        fetch("/create-checkout-session/")
+        .then((result) => { return result.json(); })
+        .then((data) => {
+          console.log(data);
+          // Redirect to Stripe Checkout
+          return stripe.redirectToCheckout({sessionId: data.sessionId})
+        })
+        .then((res) => {
+          console.log(res);
+        });
+      });
+    }
+});
 //------- Mailchimp js --------//
 function mailChimp() {
   $('#mc_embed_signup').find('form').ajaxChimp();
@@ -342,4 +366,3 @@ mailChimp();
         });
 
 })(jQuery);
-

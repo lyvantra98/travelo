@@ -18,6 +18,20 @@
         // padding: 18px 0;
         background: #fff;
         background: transparent;
+        .logo{
+            a{
+                font-family: 'Pacifico', cursive;
+                font-size: 30px;
+                color: #007bff;
+                img{
+                    height: 41px;
+                    width: 30px;
+                }
+                &:hover{
+                    color: #0056B3;
+                }
+            }
+        }
         &.details_nav_bg{
             background: #727272;
             padding-bottom: 0;
@@ -68,7 +82,6 @@
 
             }
         }
-
         .main-menu{
             padding: 12px 0;
             position: relative;
@@ -239,6 +252,20 @@
             }
             .header_bottom_border{
                 border-bottom: none;
+                .logo{
+                    a{
+                        font-family: 'Pacifico', cursive;
+                        font-size: 30px;
+                        color: #007bff;
+                        img{
+                            height: 41px;
+                            width: 30px;
+                        }
+                        &:hover{
+                            color: #0056B3;
+                        }
+                    }
+                }
             }
             .header_bottom_border.white_border {
                 border-bottom: none !important;
@@ -283,7 +310,7 @@
                     font-size: 16px;
                     margin: 0 11px;
                     &:hover{
-                        color: #FF4A52;
+                        color: #74C7E5;
                     }
                 }
             }
@@ -305,7 +332,7 @@
                     font-size: 16px;
                     margin: 0 11px;
                     &:hover{
-                        color: #FF4A52;
+                        color: #74C7E5;
                     }
                 }
             }
@@ -331,11 +358,16 @@
                 @media #{$large_device}{
                     font-size: 14px;
                 }
-
                 i{
-                    color: #FF4A52;
+                    color: #74C7E5;
                     font-size: 16px;
                     margin-right: 5px;
+                }
+                &:hover{
+                    color: #1EC6B6;
+                    i{
+                        color: #1EC6B6;
+                    }
                 }
             }
         }
@@ -347,7 +379,7 @@
         top: 0;
         bottom: 0;
         z-index: 9;
-        background: #FF4A52;
+        background: #74C7E5;
         width: 100px;
         @media #{$mobile_device} {
             width: 50px;
