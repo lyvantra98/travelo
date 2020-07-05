@@ -15,9 +15,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2s3w=fxkk(j80cc=a!%h3#2r4b$igh=&mar*k%&#edgq0-&f5w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['travelo.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,6 +80,8 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
+        'CHARSET': 'utf8',
+        'COLLATION': 'utf8_general_ci'
     }
 }
 
@@ -127,20 +129,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = 'static/'
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
 
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'static'),
+# )
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
@@ -164,4 +165,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'tealy123321@gmail.com'
 EMAIL_HOST_PASSWORD = 'deocomatkhau'
 EMAIL_USE_TLS = True
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+SOCIAL_AUTH_FACEBOOK_KEY = '1001993430216008'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4fb679f00d6c40d3ae10940d786a479d'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY= '274123049970-9tfgcmb43136gqalv12phkqu7j0cq8on.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'v37EHlo91DpBJ3tfP-ggWjat'

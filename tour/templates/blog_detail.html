@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <!--================Blog Area =================-->
+  <section class="blog_area section-padding">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="single-post">
+                  <div class="feature-img">
+                     <img class="img-fluid" src="{{blog.image.url}}" alt="">
+                  </div>
+                  <div class="blog_details">
+                      <h2>{{blog.title}}</h2>
+                      <ul class="blog-info-link mt-3 mb-4">
+                        <li><a href="#"><i class="fa fa-user"></i>{{blog.user.first_name}} {{blog.user.last_name}}</a></li>
+                      </ul>
+                      <p class="excert">
+                        {{blog.content}}
+                      </p>
+                  </div>
+               </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="blog_right_sidebar">
+
+                      <aside class="single_sidebar_widget post_category_widget">
+                          <h4 class="widget_title">Thể loại</h4>
+                          <ul class="list cat-list">
+                              <li>
+                                  <a href="#" class="d-flex">
+                                      <p>Nhà hàng ăn</p>
+                                      <p>(1)</p>
+                                  </a>
+                                  <a href="#" class="d-flex">
+                                      <p>Trải nghiệm</p>
+                                      <p>(1)</p>
+                                  </a>
+                              </li>
+                          </ul>
+                      </aside>
+
+                      <aside class="single_sidebar_widget popular_post_widget">
+                          <h3 class="widget_title">Bài đăng gần đây</h3>
+                          {% for rb in recent_post %}
+                            <div class="media post_item">
+                              <img src="{{rb.image.url}}" alt="post">
+                              <div class="media-body">
+                                  <a href="single-blog.html">
+                                      <h3>{{rb.short_blog_title}}</h3>
+                                  </a>
+                                  <p>{{rb.date}}</p>
+                              </div>
+                            </div>
+                          {% endfor %}
+                      </aside>
+                      <aside class="single_sidebar_widget newsletter_widget">
+                          <h4 class="widget_title">Bảng tin</h4>
+
+                          <form action="#">
+                              <div class="form-group">
+                                  <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = 'Enter email'" placeholder='Nhập mail' required>
+                              </div>
+                              <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                  type="submit">Theo dõi</button>
+                          </form>
+                      </aside>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================Blog Area =================-->
+  {% include 'footer.html' %}
+{% endblock %}

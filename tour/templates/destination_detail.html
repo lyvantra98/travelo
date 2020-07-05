@@ -20,7 +20,7 @@
                     <i class="fa fa-clock-o"></i>{{tour.experience_time}} Days
                 </div>
                 <div class="destination-tour-info destination-item-pdlr">
-                    <i class="fa fa-calendar"></i>Availability : {{tour.short_date_end_start}}
+                    <i class="fa fa-calendar"></i>Có hiệu lực : {{tour.short_date_end_start}}
                 </div>
                 <div class="destination-tour-info destination-item-pdlr">
                     <i class="fa fa-plane"></i>{{tour.destination.location_to}}
@@ -29,13 +29,13 @@
                     <i class="fa fa-map-marker"></i>{{tour.destination.location_from}}
                 </div>
                 <div class="destination-tour-info destination-item-pdlr">
-                    <i class="fa fa-user"></i>Min Age : {{tour.min_age}}+
+                    <i class="fa fa-user"></i>Tuổi : {{tour.min_age}}+
                 </div>
                 <div class="destination-tour-info destination-item-pdlr">
-                    <i class="fa fa-users"></i>Max People : {{tour.max_people}}
+                    <i class="fa fa-users"></i>Số người : {{tour.max_people}}
                 </div>
                 <div class="destination-tour-info destination-item-pdlr">
-                    <i class="fa fa-tag"></i>Price : {{tour.price}}
+                    <i class="fa fa-tag"></i>Giá : {{tour.price}}đ
                 </div>
             </div>
             <div class="destination-tour-info-wrap clearfix">
@@ -55,20 +55,21 @@
                 <div class="destination_info">
                     <h3>
                       <i class="fa fa-file-text-o"></i>
-                      Tour Details
+                      Thông tin tour
                     </h3>
                     {{tour.detail_tour|safe|linebreaks}}
                 </div>
                 <div class="bordered_1px"></div>
                 <div class="contact_join">
-                    <h3><i class="fa fa-file-image-o"></i> Photo</h3>
+                    <h3><i class="fa fa-file-image-o"></i> Ảnh</h3>
                     <!--Carousel Wrapper-->
                     <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
                       <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                           <div class="view">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-                              alt="First slide">
+                            {% for photo in tour.tour_photo.all %}
+                                <img class="d-block w-100" src="{{photo.image.url}}" alt="First slide">
+                            {% endfor %}
                             <div class="mask rgba-black-light"></div>
                           </div>
                         </div>
@@ -87,130 +88,78 @@
             </div>
         </div>
     </div>
-    <!-- newletter_area_start  -->
-    <div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-9">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about
-                                    new places to discover.</p>
-                            </div>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8">
+                <div class="d-flex flex-column comment-section">
+                    <div class="bg-white p-2">
+                        {% for item in tour.review.all %}
+                        <div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                            <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{item.author.first_name}} {{item.author.last_name}}</span><span class="date text-black-50">{{item.date}}</span></div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="mt-2">
+                            <p class="comment-text">{{item.content}}</p>
                         </div>
+                        {% endfor %}
+                    </div>
+                    <!--
+                    <div class="bg-white">
+                        <div class="d-flex flex-row fs-12">
+                            <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+                            <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
+                            <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                        </div>
+                    </div>
+                        -->
+                    <div class="bg-light p-2">
+                        <h5>Bình luận (5)</h5>
+                        <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
+                        <div class="mt-2 text-right"><button class="btn bntcmt btn-sm shadow-none" type="button">Bình luận</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- newletter_area_end  -->
+    {% include 'newletter.html' %}
 
     <div class="popular_places_area">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>More Places</h3>
+                        <h3>Xem thêm địa điểm</h3>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/1.png" alt="">
-                            <a href="#" class="prise">$500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="#"><h3>California</h3></a>
-                            <p>United State of America</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
+                {% for p in tours %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_place">
+                            <div class="thumb">
+                                <img src="{{p.tour_photo.first.image.url}}" alt="">
+                                <a href="destination/{{p.id}}" class="prise">{{p.price}}</a>
+                            </div>
+                            <div class="place_info">
+                                <a href="destination/{{p.id}}"><h3>{{p.destination.destination_name}}</h3></a>
+                                <p>{{p.destination.area}}</p>
+                                <div class="rating_days d-flex justify-content-between">
+                                    <span class="d-flex justify-content-center align-items-center">
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <i class="fa fa-star"></i>
+                                         <a href="#">({{p.num_review}} Review)</a>
+                                    </span>
+                                    <div class="days">
+                                        <i class="fa fa-clock-o"></i>
+                                        <a href="#">{{p.experience_time}} Ngày</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/2.png" alt="">
-                            <a href="#" class="prise">$500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="#"><h3>Korola Megna</h3></a>
-                            <p>United State of America</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/3.png" alt="">
-                            <a href="#" class="prise">$500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="#"><h3>London</h3></a>
-                            <p>United State of America</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <i class="fa fa-star"></i>
-                                     <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}Đăng kí{% endblock %}
 
 {% block content %}
   {% include 'header.html' %}
@@ -12,12 +12,12 @@
           <div class="col-md-3 register-left">
               <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
               <h3>Welcome</h3>
-              <p>Many attractive tours are waiting for you!</p>
+              <p>Nhiều tour du lịch hấp dẫn đang chờ bạn!</p>
           </div>
           <div class="col-md-9 register-right">
               <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                      <h3 class="register-heading">Sign Up</h3>
+                      <h3 class="register-heading">Đăng kí</h3>
                       <form class="row register-form" method="post">
                           {% csrf_token %}
                           <div class="col-md-6">

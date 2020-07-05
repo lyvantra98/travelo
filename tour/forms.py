@@ -35,16 +35,16 @@ class BookingForm(forms.ModelForm):
   people_number = forms.IntegerField(widget= forms.TextInput(
       attrs={'placeholder':'People Number','type':'number','min':'1'}))
 
-  def __init__(self, *args, **kwargs):
-    self.author = kwargs.pop('author',None)
-    self.tour = kwargs.pop('tour',None)
-    super().__init__(*args, **kwargs)
+  # def __init__(self, *args, **kwargs):
+  #   self.author = kwargs.pop('author',None)
+  #   self.tour = kwargs.pop('tour',None)
+  #   super().__init__(*args, **kwargs)
 
-  def save(self, commit=True):
-    booking = super().save(commit=False)
-    booking.profile = self.author
-    booking.tour = self.tour
-    booking.save()
+  # def save(self, commit=True):
+  #   booking = super().save(commit=False)
+  #   booking.profile = self.author
+  #   booking.tour = self.tour
+  #   booking.save()
 
   class Meta:
     model = Booking

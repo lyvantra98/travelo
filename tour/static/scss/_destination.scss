@@ -28,7 +28,8 @@
         }
         .thumb{
             img{
-                width: 100%;
+                width: 362px;
+                height: 204px;
                 @include border-radius(5px);
             }
         }
@@ -140,14 +141,14 @@
 }
 
 .destination_details_info{
-    padding-bottom: 110px;
+    padding-bottom: 50px;
     padding-top: 70px;
     @media #{$mobile_device} {
-        padding-top: 50px;
+        padding-top: 25px;
         padding-bottom: 70px;
     }
     @media #{$tablet_device} {
-        padding-top: 50px;
+        padding-top: 25px;
         padding-bottom: 70px;
     }
     .bordered_1px{

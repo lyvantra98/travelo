@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Travelo{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <div class="popular_places_area">
+      <div class="container">
+          <div class="row">
+              {% for p in tour_list %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_place">
+                        <div class="thumb">
+                            <img src="{{p.tour_photo.first.image.url}}" alt="">
+                            <a href="/destination/{{p.id}}" class="prise">{{p.price}}đ</a>
+                        </div>
+                        <div class="place_info">
+                            <a href="/destination/{{p.id}}"><h3>{{p.short_tour_name}}</h3></a>
+                            <p>{{p.destination.area}}</p>
+                            <div class="rating_days d-flex justify-content-between">
+                                <span class="d-flex justify-content-center align-items-center">
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <a href="#">({{p.num_review}} Review)</a>
+                                </span>
+                                <div class="days">
+                                    <i class="fa fa-clock-o"></i>
+                                    <a href="#">{{p.experience_time}} Days</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+          </div>
+          <div class="row">
+            {% if tour_list.has_other_pages %}
+              <ul class="pagination">
+                {% if tour_list.has_previous %}
+                  <li class="page-item"><a class="page-link" href="?page={{ tour_list.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="page-item"><a class="page-link">&laquo;</a></li>
+                {% endif %}
+                {% for i in tour_list.paginator.page_range %}
+                  {% if tour_list.number == i %}
+                    <li class="page-item"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a></li>
+                  {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if tour_list.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ tour_list.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="page-item"><a class="page-link">&raquo;</a></li>
+                {% endif %}
+              </ul>
+            {% endif %}
+          </div>
+      </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

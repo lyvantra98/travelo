@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <!--================Blog Area =================-->
+  <section class="blog_area section-padding">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 mb-5 mb-lg-0">
+                  <div class="blog_left_sidebar">
+                    {% for b in blogs %}
+                      <article class="blog_item">
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{{b.image.url}}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3>{{b.date.day}}</h3>
+                                <p>{{b.month_name}}</p>
+                            </a>
+                        </div>
+
+                        <div class="blog_details">
+                            <a class="d-inline-block" href="single-blog.html">
+                                <h2>{{b.title}}</h2>
+                            </a>
+                            <p>{{b.short_blog_content}}</p>
+                            <ul class="blog-info-link">
+                                <li><a href="#"><i class="fa fa-user"></i>{{b.user.first_name}} {{b.user.last_name}}</a></li>
+                            </ul>
+                        </div>
+                      </article>
+                    {% endfor %}
+                      <nav class="blog-pagination justify-content-center d-flex">
+                          {% if blogs.has_other_pages %}
+                            <ul class="pagination">
+                              {% if blogs.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ blogs.previous_page_number }}">&laquo;</a></li>
+                              {% else %}
+                                <li class="page-item"><a class="page-link">&laquo;</a></li>
+                              {% endif %}
+                              {% for i in blogs.paginator.page_range %}
+                                {% if blogs.number == i %}
+                                  <li class="page-item"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a></li>
+                                {% else %}
+                                  <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                              {% endfor %}
+                              {% if blogs.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ blogs.next_page_number }}">&raquo;</a></li>
+                              {% else %}
+                                <li class="page-item"><a class="page-link">&raquo;</a></li>
+                              {% endif %}
+                            </ul>
+                          {% endif %}
+                      </nav>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="blog_right_sidebar">
+                      <aside class="single_sidebar_widget post_category_widget">
+                          <h4 class="widget_title">Thể loại</h4>
+                          <ul class="list cat-list">
+                              <li>
+                                  <a href="#" class="d-flex">
+                                      <p>Nhà hàng ăn </p>
+                                      <p>(1)</p>
+                                  </a>
+                                   <a href="#" class="d-flex">
+                                      <p>Trải nghiệm</p>
+                                      <p>(1)</p>
+                                  </a>
+                              </li>
+                          </ul>
+                      </aside>
+
+                      <aside class="single_sidebar_widget popular_post_widget">
+                          <h3 class="widget_title">Bài đăng gần đây</h3>
+                          {% for rb in recent_post %}
+                            <div class="media post_item">
+                              <img src="{{rb.image.url}}" alt="post">
+                              <div class="media-body">
+                                  <a href="/blog/{{rb.id}}">
+                                      <h3>{{rb.short_blog_title}}</h3>
+                                  </a>
+                                  <p>{{rb.date}}</p>
+                              </div>
+                            </div>
+                          {% endfor %}
+                      </aside>
+                      <aside class="single_sidebar_widget newsletter_widget">
+                          <h4 class="widget_title">Bản tin</h4>
+
+                          <form action="#">
+                              <div class="form-group">
+                                  <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = 'Enter email'" placeholder='Nhập mail' required>
+                              </div>
+                              <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                  type="submit">Theo dõi</button>
+                          </form>
+                      </aside>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================Blog Area =================-->
+  <div class="col-lg-8 posts-list">
+    <div class="comment-form">
+      <h4>Đăng bài</h4>
+      <form class="form-contact comment_form" action="#" id="commentForm">
+         <div class="row">
+            <div class="col-12">
+               <div class="form-group">
+                  <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9"
+                     placeholder="Nội dung"></textarea>
+               </div>
+            </div>
+            <div class="col-sm-6">
+               <div class="form-group">
+                  <input class="form-control" name="title" id="title" type="text" placeholder="Tiêu đề">
+               </div>
+            </div>
+            <div class="col-sm-6">
+               <div class="form-group">
+                  <input class="form-control" name="tag" id="tag" type="text" placeholder="Tag">
+               </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+         </div>
+      </form>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

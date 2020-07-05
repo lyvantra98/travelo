@@ -28,11 +28,11 @@
                             </div>
                             <div class="registration">
                                 {% if user.is_authenticated %}
-                                  <a href="#"> <i class="fa fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a>
-                                  <a href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"></i> Logout</a>
+                                  <a href="/profile/{{user.id}}"> <i class="fa fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a>
+                                  <a href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
                                 {% else %}
-                                  <a href="{% url 'login' %}"> <i class="fa fa-lock"></i> Login</a>
-                                  <a href="{% url 'signup' %}"> <i class="fa fa-user"></i> Signup</a>
+                                  <a href="{% url 'login' %}"> <i class="fa fa-lock"></i> Đăng nhập</a>
+                                  <a href="{% url 'signup' %}"> <i class="fa fa-user"></i> Đăng kí</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -61,22 +61,11 @@
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a class="active" href="{% url 'index' %}">home</a></li>
-                                    <li><a href="{% url 'about' %}">About</a></li>
-                                    <li><a href="{% url 'destination' %}">Destination</a></li>
-                                    <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                                <li><a href="destination_details.html">Destinations details</a></li>
-                                                <li><a href="elements.html">elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="single-blog.html">single-blog</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li><a class="active" href="{% url 'index' %}">Trang chủ</a></li>
+                                    <li><a href="{% url 'about' %}">Giới thiệu</a></li>
+                                    <li><a href="{% url 'destination' %}">Điểm đến</a></li>
+                                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                                    <li><a href="{% url 'contact' %}">Liên hệ</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -109,8 +98,10 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="serch_form">
-        <input type="text" placeholder="Search" >
-        <button type="submit">search</button>
+        <form action="{% url 'search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Search" >
+            <button type="submit">search</button>
+        </form>
     </div>
   </div>
 </div>

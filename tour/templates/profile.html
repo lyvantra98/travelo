@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}  {% endblock %}
+{% block content %}
+  {% include 'header.html' %}
+  <div class="container bootstrap snippets">
+      <div class="row" id="user-profile">
+          <div class="col-lg-3 col-md-4 col-sm-4">
+              <div class="main-box clearfix">
+                  <h2>{{p.first_name}} {{p.last_name}}</h2>
+                  <img src="{{p.profile.image.url}}" alt="" class="profile-img img-responsive center-block">
+              </div>
+          </div>
+          <div class="col-lg-9 col-md-8 col-sm-8">
+              <div class="main-box clearfix">
+                  <div class="profile-header">
+                      <h3><span>User info</span></h3>
+                      <a href="#" class="btn edit-profile">
+                          <i class="fa fa-pencil-square fa-lg"></i> Edit profile
+                      </a>
+                  </div>
+                  <div class="row profile-user-info">
+                      <div class="col-sm-8">
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  First Name
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.first_name}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Last Name
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.last_name}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Country
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.profile.country}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Email
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.email}}
+                              </div>
+                          </div>
+                          <div class="profile-user-details clearfix">
+                              <div class="profile-user-details-label">
+                                  Phone number
+                              </div>
+                              <div class="profile-user-details-value">
+                                  {{p.profile.phone_number}}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="tabs-wrapper profile-tabs">
+                    <h6>History booking</h6>
+                    <div class="tab-content">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    {% for b in p.booking.all %}
+                                      <tr>
+                                        <td class="text-center">
+                                            <i class="fa fa-comment"></i>
+                                        </td>
+                                        <td>
+                                            Đặt vé <a href="#">{{b.tour}}</a>.
+                                        </td>
+                                        <td>
+                                            {{b.booking_time}}
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

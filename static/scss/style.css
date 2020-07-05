@@ -221,8 +221,7 @@ h3 {
   opacity: 1; }
 
 .section-padding {
-  padding-top: 120px;
-  padding-bottom: 120px; }
+  padding-top: 120px; }
 
 .pt-120 {
   padding-top: 120px; }
@@ -587,6 +586,160 @@ h3 {
   right: 0;
   margin-top: -5px;
   top: -33px; }
+
+.date {
+  font-size: 11px; }
+
+.comment-text {
+  font-size: 12px; }
+
+.fs-12 {
+  font-size: 12px; }
+
+.shadow-none {
+  box-shadow: none; }
+
+.name {
+  color: #007bff; }
+
+.cursor:hover {
+  color: blue; }
+
+.cursor {
+  cursor: pointer; }
+
+.textarea {
+  resize: none; }
+
+.bntcmt {
+  background-color: #FF4A52;
+  color: #FFFFFF; }
+
+#user-profile h2 {
+  padding-right: 15px; }
+
+#user-profile .profile-status {
+  font-size: 0.75em;
+  padding-left: 12px;
+  margin-top: -10px;
+  padding-bottom: 10px;
+  color: #8dc859; }
+
+#user-profile .profile-status.offline {
+  color: #fe635f; }
+
+#user-profile .profile-img {
+  border: 1px solid #e1e1e1;
+  padding: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  weight: 255px;
+  height: 255px; }
+
+#user-profile .profile-label {
+  text-align: center;
+  padding: 5px 0; }
+
+#user-profile .profile-label .label {
+  padding: 5px 15px;
+  font-size: 1em; }
+
+#user-profile .profile-stars {
+  color: #FABA03;
+  padding: 7px 0;
+  text-align: center; }
+
+#user-profile .profile-stars > i {
+  margin-left: -2px; }
+
+#user-profile .profile-since {
+  text-align: center;
+  margin-top: -5px; }
+
+#user-profile .profile-details {
+  padding: 15px 0;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  margin: 15px 0; }
+
+#user-profile .profile-details ul {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40px; }
+
+#user-profile .profile-details ul > li {
+  margin: 3px 0;
+  line-height: 1.5; }
+
+#user-profile .profile-details ul > li > i {
+  padding-top: 2px; }
+
+#user-profile .profile-details ul > li > span {
+  color: #34d1be; }
+
+#user-profile .profile-header {
+  position: relative; }
+
+#user-profile .profile-header > h3 {
+  margin-top: 10px; }
+
+#user-profile .profile-header .edit-profile {
+  margin-top: -6px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #FF4A52;
+  color: #FFFFFF; }
+
+#user-profile .profile-tabs {
+  margin-top: 30px; }
+
+#user-profile .profile-user-info {
+  padding-bottom: 20px; }
+
+#user-profile .profile-user-info .profile-user-details {
+  position: relative;
+  padding: 4px 0; }
+
+#user-profile .profile-user-info .profile-user-details .profile-user-details-label {
+  width: 110px;
+  float: left;
+  bottom: 0;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  text-align: right;
+  top: 0;
+  width: 110px;
+  padding-top: 4px; }
+
+#user-profile .profile-user-info .profile-user-details .profile-user-details-value {
+  margin-left: 120px; }
+
+#user-profile .profile-social li {
+  padding: 4px 0; }
+
+#user-profile .profile-social li > i {
+  padding-top: 6px; }
+
+@media only screen and (max-width: 767px) {
+  #user-profile .profile-user-info .profile-user-details .profile-user-details-label {
+    float: none;
+    position: relative;
+    text-align: left; }
+  #user-profile .profile-user-info .profile-user-details .profile-user-details-value {
+    margin-left: 0; }
+  #user-profile .profile-social {
+    margin-top: 20px; } }
+
+@media only screen and (max-width: 420px) {
+  #user-profile .profile-header .edit-profile {
+    display: block;
+    position: relative;
+    margin-bottom: 15px; }
+  #user-profile .profile-message-btn .btn {
+    display: block; } }
 
 :root {
   --input-padding-x: 1.5rem;
@@ -1892,7 +2045,8 @@ h3 {
       z-index: 2;
       position: absolute; }
     .popular_destination_area .single_destination .thumb img {
-      width: 100%;
+      width: 362px;
+      height: 204px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       border-radius: 5px; }
@@ -1993,15 +2147,15 @@ h3 {
     color: #fff; }
 
 .destination_details_info {
-  padding-bottom: 110px;
+  padding-bottom: 50px;
   padding-top: 70px; }
   @media (max-width: 767px) {
     .destination_details_info {
-      padding-top: 50px;
+      padding-top: 25px;
       padding-bottom: 70px; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .destination_details_info {
-      padding-top: 50px;
+      padding-top: 25px;
       padding-bottom: 70px; } }
   .destination_details_info .bordered_1px {
     border-top: 1px solid #E4E6E8;
@@ -3795,6 +3949,10 @@ h6 {
       margin-bottom: 0px; }
   .blog_right_sidebar .post_category_widget .cat-list li + li {
     padding-top: 15px; }
+
+.blog_right_sidebar .popular_post_widget .post_item img {
+  weight: 80px;
+  height: 80px; }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body {
   justify-content: center;
